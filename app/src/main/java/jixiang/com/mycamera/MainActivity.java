@@ -1,13 +1,17 @@
 package jixiang.com.mycamera;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.PersistableBundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -27,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private String filePath;//纪录图片所在的路径
 
     FileInputStream fis;
+
+    Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         if(resultCode==RESULT_OK){
             if(requestCode==REQ_1){
                 //由于原图过大，这里获取不到原图，仅仅是缩略图
-                Bundle bundle=data.getExtras();
+                bundle=data.getExtras();
                 Bitmap bitmap= (Bitmap) bundle.get("data");
                 imageView.setImageBitmap(bitmap);
             }else if(requestCode==REQ_2){
@@ -76,6 +82,33 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //保存数据，oncreate时不会丢失数据
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        //取出数据，加载
+    }
+
+
+    //当config发生变化时，回掉该方法，可用于横竖屏切换更改contentview
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        //竖屏方向
+        if(getResources().getConfiguration().orientation== Configuration.ORIENTATION_LANDSCAPE){
+            Log.d("orientation","LANDSCAPE");
+        }else if(getResources().getConfiguration().orientation==Configuration.ORIENTATION_PORTRAIT){
+            //横屏方向
+            Log.d("orientation","PROTRAT");
         }
     }
 }
