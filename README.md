@@ -5,7 +5,7 @@
 ##1.利用隐式Intent 打开camera
 ###1.1 获取图片以intent+onActivityResult的方式返回（图片为缩略图） 
 * 首先 在mainifexst下添加权限
-                <uses-permission android:name="android.permission.CAMERA" />
+```<uses-permission android:name="android.permission.CAMERA" />```
 * 最简洁的java代码如下：
 ```Java
         Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -35,7 +35,9 @@
 在许多的需求场合中，我们需要确保拍摄图像的保真性，这就需要保存和获取到拍照后的原图。
 在这里我们使用I/O流的方式来实现。
 
-首先在隐式intent中添加代码<br>
+* 首先在mainifexst下添加权限
+```<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />```
+* 其次在隐式intent中添加代码<br>
   ```java
    Uri uri = Uri.fromFile(new File(filePath));
     //让拍照的照片放在指定的目录下 uri
@@ -43,7 +45,7 @@
   ```
      
 其中filePath为保存拍照图片的地址，拍照后的照片默认保存到该地址。
-之后配置onActivityResult方法，
+* 最后配置onActivityResult方法，
 ```java
  @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
