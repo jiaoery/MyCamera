@@ -4,6 +4,8 @@
 
 ##1.利用隐式Intent 打开camera
 ###1.1 获取图片以intent+onActivityResult的方式返回（图片为缩略图） 
+* 首先 在mainifexst下添加权限
+                <uses-permission android:name="android.permission.CAMERA" />
 * 最简洁的java代码如下：
 ```Java
         Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
