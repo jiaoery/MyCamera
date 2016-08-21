@@ -30,12 +30,22 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="start camera"
+        android:text="start camera2"
         android:onClick="startCamera2"
-        android:layout_marginTop="200dp"/>
+        android:layout_marginTop="20dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/iv_image2"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="start custom camera"
+        android:onClick="startCustomCamera"
+        android:layout_marginTop="20dp"/>
+
+
 </LinearLayout>

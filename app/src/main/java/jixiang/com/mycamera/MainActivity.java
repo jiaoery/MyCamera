@@ -86,6 +86,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    public void startCustomCamera(View view){
+        Intent intent=new Intent(this,CustomCamera.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
