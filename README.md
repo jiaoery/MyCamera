@@ -28,6 +28,7 @@
 ```
 按照所写的demo效果如下
 ![](https://github.com/jixiang52002/MyCamera/blob/master/app/image/QQ%E5%9B%BE%E7%89%8720160819170402.jpg)
+<br>
 但是我们会发现，这里从data中获取到的图片和直接拍照相册中的图片有着很多的不同。
 这里是由于原图过大，而intent中所能携带的资源有限，所以回调的时候返回的是缩略图。
 
